@@ -8,7 +8,7 @@
 <body class="white-bg">
 {% set cp = doc.company %}
 {% set isNota = doc.tipoDoc in ['07', '08'] %}
-{% set isProforma = doc.tipoDoc is '101' %}
+{% set isProforma = doc.tipoDoc in ['101'] %}
 {% set isAnticipo = doc.totalAnticipos is defined and doc.totalAnticipos > 0 %}
 {% set name = doc.tipoDoc|catalog('01') %}
 <table width="100%">
