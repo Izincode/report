@@ -28,6 +28,7 @@ class DocumentFilter
             '20' => 'RETENCIÓN',
             '31' => 'GUÍA DE REMISIÓN TRANSPORTISTA',
             '40' => 'PERCEPCIÓN',
+            '101' => 'PROFORMA',
         ],
         '02' => [
             'PEN' => 'S/',
