@@ -8,6 +8,7 @@
 <body class="white-bg">
 {% set cp = doc.company %}
 {% set isNota = doc.tipoDoc in ['07', '08'] %}
+{% set isProforma = doc.tipoDoc is '101' %}
 {% set isAnticipo = doc.totalAnticipos is defined and doc.totalAnticipos > 0 %}
 {% set name = doc.tipoDoc|catalog('01') %}
 <table width="100%">
@@ -24,9 +25,15 @@
                             <table width="100%" border="0" height="200" cellpadding="6" cellspacing="0">
                                 <tbody><tr>
                                     <td align="center">
+                                    {% if isProforma %}
+                                        <span style="font-family:Tahoma, Geneva, sans-serif; font-size:29px" text-align="center">PROFORMA</span>
+                                        <br>
+                                        <span style="font-family:Tahoma, Geneva, sans-serif; font-size:19px" text-align="center"></span>
+                                    {% else %}
                                         <span style="font-family:Tahoma, Geneva, sans-serif; font-size:29px" text-align="center">{{ name }}</span>
                                         <br>
                                         <span style="font-family:Tahoma, Geneva, sans-serif; font-size:19px" text-align="center">E L E C T R Ó N I C A</span>
+                                    {% endif %}
                                     </td>
                                 </tr>
                                 <tr>
@@ -318,7 +325,11 @@
                                 {% if params.system.hash is defined and params.system.hash%}
                                     <strong>Resumen:</strong>   {{ params.system.hash }}<br>
                                 {% endif %}
+                                {% if isProforma %}
+                                <span>Representación Impresa de {{ name }}, no cuenta validez legal ni efectos contables.</span>
+                                {% else %}
                                 <span>Representación Impresa de la {{ name }} ELECTRÓNICA.</span>
+                                {% endif %}
                             </blockquote>
                         </td>
                         <td width="15%" align="right">
